@@ -1,0 +1,18 @@
+GET http://localhost:3000/users
+Authorization: Bearer token
+
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "username": "Adarsh Chakraborty"
+}
+
+###
+POST http://localhost:3000/refreshtoken
+Content-Type: application/json
+
+{
+    "token": "token"
+}
