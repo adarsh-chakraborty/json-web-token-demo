@@ -26,7 +26,7 @@ app.use(express.json());
 
 app.post('/login', (req, res, next) => {
 	const { username } = req.body;
-	if (!username) return sendStatus(401);
+	if (!username) return res.sendStatus(401);
 	const user = {
 		name: username,
 		password: '1234'
@@ -52,7 +52,7 @@ app.post('/refreshtoken', (req, res, next) => {
 	}
 
 	jwt.verify(refreshToken, process.env.SECRET_REFRESH_TOKEN, (err, user) => {
-		if (err) return sendStatus(403);
+		if (err) return res.sendStatus(403);
 		const accessToken = generateAccessToken({ name: user.name }); // user contains additional info like createdAt so we just need name
 		res.json({ accessToken });
 	});
